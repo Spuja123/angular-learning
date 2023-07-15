@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
 })
 
 export class SignInComponent {
-  
+  constructor() {}
+  performLogin(loginForm:any){
+    console.log(loginForm);
+  };
+ // console.log(loginControl);
+ 
 }
