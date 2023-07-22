@@ -16,9 +16,8 @@
             <div class="d-flex flex-column">
               <div
                 class="wrap-input"
-                ngClass="{
-                  invalid:
-                    username.invalid && username.dirty,
+                [ngClass]="{
+                  invalid: username.invalid && username.dirty,
                   valid: username.valid && username.dirty
                 }"
               >
@@ -28,22 +27,19 @@
                   name="username"
                   ngModel
                   required
-                  #name="ngModel"
+                  #username="ngModel"
                   placeholder="Username"
-                  pattern="/^[a-zA-Z]+ [a-zA-Z]+$/"
+                  pattern="^[a-zA-Z]+ [a-zA-Z]+$"
                 />
                 <span
-                  *ngIf="
-                    name.valid && name.dirty
-                  "
+                  *ngIf="username.valid && username.dirty"
                   class="check"
                 ></span>
               </div>
               <div
                 class="wrap-input mb-0"
-                ngClass="{
-                  invalid:
-                    password.invalid && password.dirty,
+                [ngClass]="{
+                  invalid: password.invalid && password.dirty,
                   valid: password.valid && password.dirty
                 }"
               >
@@ -52,15 +48,13 @@
                   type="password"
                   name="password"
                   placeholder="Password"
-                  #name="ngModel"
+                  #password="ngModel"
                   ngModel
                   required
-                  pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/"
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 />
                 <span
-                  *ngIf="
-                    name.valid && name.dirty
-                  "
+                  *ngIf="password.valid && password.dirty"
                   class="check"
                 ></span>
               </div>
@@ -71,8 +65,8 @@
                 <p
                   class="login-alert"
                   *ngIf="
-                    name.errors?.['required'] &&
-                    name.dirty
+                    username.errors?.['required'] &&
+                    username.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -81,8 +75,8 @@
                 <p
                   class="login-alert"
                   *ngIf="
-                    name.errors?.['required'] &&
-                    name.dirty
+                  password.errors?.['required'] &&
+                  password.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -91,8 +85,8 @@
                 <p
                   class="login-alert"
                   *ngIf="
-                    name.errors?.['pattern'] &&
-                    name.dirty
+                    username.errors?.['pattern'] &&
+                    username.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -101,8 +95,8 @@
                 <p
                   class="login-alert"
                   *ngIf="
-                    name.errors?.['pattern'] &&
-                    name.dirty
+                  password.errors?.['pattern'] &&
+                  password.dirty
                   "
                 >
                   <span class="alert"></span>
