@@ -3,14 +3,12 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  styleUrls: ['./sign-in.component.css'],
 })
-
 export class SignInComponent {
   constructor() {}
-  performLogin(loginForm:any){
+  performLogin(loginForm: any) {
     console.log(loginForm);
-  };
- // console.log(loginControl);
- 
+  }
+  // console.log(loginControl);
 }

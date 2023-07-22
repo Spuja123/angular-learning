@@ -139,7 +139,7 @@ textarea {
 
 .login-more::after {
   content: '';
-  background: url(../../assets/img/login.png) no-repeat right bottom;
+  background: url(/assets/img/login.png) no-repeat right bottom;
   display: block;
   position: absolute;
   right: 62px;
@@ -229,7 +229,7 @@ textarea {
 }
 
 .login-logo {
-  background: url(../../assets/img/your_logo.png) no-repeat;
+  background: url(/assets/img/your_logo.png) no-repeat;
   width: 167px;
   height: 46px;
 }
@@ -399,7 +399,7 @@ textarea {
   }
 
   .login-more::after {
-    background: url(../../assets/img/login-sm.png) no-repeat right bottom;
+    background: url(/assets/img/login-sm.png) no-repeat right bottom;
     width: 100px;
     height: 100px;
   }
@@ -438,7 +438,7 @@ textarea {
 }
 
 .home-logo {
-  background: url(../../assets/img/your_logo_sm.png) no-repeat;
+  background: url(/assets/img/your_logo_sm.png) no-repeat;
   width: 100%;
   height: 31px;
 }
