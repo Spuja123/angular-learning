@@ -3,8 +3,8 @@
     <div class="wrap-login">
       <form
         class="login-form validate-form"
-        name="loginForm"
-        ng-submit="performLogin()"
+        #loginForm="ngForm"
+        (ngSubmit)="performLogin(loginForm)"
       >
         <div class="login-frame">
           <div class="login-logo"></div>
@@ -16,34 +16,31 @@
             <div class="d-flex flex-column">
               <div
                 class="wrap-input"
-                ng-class="{
-                  invalid:
-                    loginForm.username.$invalid && loginForm.username.$dirty,
-                  valid: loginForm.username.$valid && loginForm.username.$dirty
+                [ngClass]="{
+                  invalid: username.invalid && username.dirty,
+                  valid: username.valid && username.dirty
                 }"
               >
                 <span class="user"></span>
                 <input
                   type="text"
                   name="username"
+                  ngModel
+                  required
+                  #username="ngModel"
                   placeholder="Username"
-                  ng-model="username"
-                  ng-required="true"
-                  ng-pattern="/^[a-zA-Z]+ [a-zA-Z]+$/"
+                  pattern="^[a-zA-Z]+ [a-zA-Z]+$"
                 />
                 <span
-                  ng-show="
-                    loginForm.username.$valid && loginForm.username.$dirty
-                  "
+                  *ngIf="username.valid && username.dirty"
                   class="check"
                 ></span>
               </div>
               <div
                 class="wrap-input mb-0"
-                ng-class="{
-                  invalid:
-                    loginForm.password.$invalid && loginForm.password.$dirty,
-                  valid: loginForm.password.$valid && loginForm.password.$dirty
+                [ngClass]="{
+                  invalid: password.invalid && password.dirty,
+                  valid: password.valid && password.dirty
                 }"
               >
                 <span class="password"></span>
@@ -51,26 +48,25 @@
                   type="password"
                   name="password"
                   placeholder="Password"
-                  ng-model="password"
-                  ng-required="true"
-                  ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/"
+                  #password="ngModel"
+                  ngModel
+                  required
+                  pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 />
                 <span
-                  ng-show="
-                    loginForm.password.$valid && loginForm.password.$dirty
-                  "
+                  *ngIf="password.valid && password.dirty"
                   class="check"
                 ></span>
               </div>
               <div
                 class="d-flex flex-column align-items-start"
-                ng-show="loginForm.$dirty && loginForm.$invalid"
+                *ngIf="loginForm.dirty && loginForm.invalid"
               >
                 <p
                   class="login-alert"
-                  ng-show="
-                    loginForm.username.$error.required &&
-                    loginForm.username.$dirty
+                  *ngIf="
+                    username.errors?.['required'] &&
+                    username.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -78,9 +74,9 @@
                 </p>
                 <p
                   class="login-alert"
-                  ng-show="
-                    loginForm.password.$error.required &&
-                    loginForm.password.$dirty
+                  *ngIf="
+                  password.errors?.['required'] &&
+                  password.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -88,9 +84,9 @@
                 </p>
                 <p
                   class="login-alert"
-                  ng-show="
-                    loginForm.username.$error.pattern &&
-                    loginForm.username.$dirty
+                  *ngIf="
+                    username.errors?.['pattern'] &&
+                    username.dirty
                   "
                 >
                   <span class="alert"></span>
@@ -98,9 +94,9 @@
                 </p>
                 <p
                   class="login-alert"
-                  ng-show="
-                    loginForm.password.$error.pattern &&
-                    loginForm.password.$dirty
+                  *ngIf="
+                  password.errors?.['pattern'] &&
+                  password.dirty
                   "
                 >
                   <span class="alert"></span>
